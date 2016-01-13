@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "gaussseidel.h"
-#include "jacobi.h"
+
+#include "func.h"
 
 double ** dmalloc_2d(int N) {
 
@@ -60,15 +60,4 @@ void free_A(double **A){
 void free_B(double *B){
 
 	free(B);
-}
-
-
-
-
-int main()
-{
-	printf("hello world");
-
-	return 0;
-
 }
