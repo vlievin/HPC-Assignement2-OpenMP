@@ -5,7 +5,7 @@ CFLAGS=-g #-O3
 LDFLAGS=
 LIBS = -lm
 # macro: sources
-SOURCES= main.c gaussseidel.c utils.c
+SOURCES= main.c gaussseidel.c jacobi.c utils.c 
 OBJECTS=$(SOURCES:.c=.o)
 EXECUTABLE=poisson
 
