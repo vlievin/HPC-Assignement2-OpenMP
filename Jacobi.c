@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// allocate a double-prec m x n matrix
+#include "func.h"
+
 double ** dmalloc_2d(int N) {
 
 	if (N <= 0 ) return NULL;
@@ -50,11 +51,13 @@ double * Get_B (int N){
 	return B;
 }
 
+void free_A(double **A){
+    
+    free(A[0]);
+    free(A);
+}
 
-int main(){
+void free_B(double *B){
 
-
-
-
-	return 0;
+	free(B);
 }
