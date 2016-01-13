@@ -6,10 +6,11 @@
 
 int main()
 {
-	int N = 9;
+	int real_size = 5;
+	int N = real_size * real_size;
 	double ** A = dmalloc_2d(N);
 	double * B = dmalloc_1d(N);
-	printf("hello world");
+	printf("\n");
 	set_A(A,N);
 	set_B(B,N);
 	displayArray(A, N);

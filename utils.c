@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include "utils.h"
+
 
 double ** dmalloc_2d(int N) {
 
@@ -68,7 +70,26 @@ void set_B (double*B, int N){
 	}*/
 	int i;
 	for(i=0; i<N; i++){
-		B[i] = rand()%10;
+		B[i] = 0;
+	}
+
+	double v = 200; 
+	double n = sqrt( (double)N );
+	int j;
+	i = 0;
+	for (i = 0 ; i < n; i++)
+	{
+		double y = -1.0 + 2.0 * (float)i/n;
+		for (j = 0; j < n ; j++)
+		{
+			double x = -1.0 + 2.0 * (float)j/n;
+			if (x >= 0 && x <= 1.0/3.0 && y >= -2.0/3.0 && y <= -1.0/3.0)
+				B[i + (int)n * j] = 200.0;
+			else
+				B[i + (int)n * j] = 0.0;
+				
+
+		}
 	}
 }
 
@@ -76,7 +97,7 @@ void displayVect(double *B, int N)
 {
 	int i;
 	for(i=0; i<N; i++){
-		printf("%f", B[i]);
+		printf("%f  ", B[i]);
 	}
 }
 
