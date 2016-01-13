@@ -6,16 +6,18 @@
 
 int main()
 {
-	int real_size = 5;
+	int real_size = 2;
 	int N = real_size * real_size;
 	double ** A = dmalloc_2d(N);
-	double * B = dmalloc_1d(N);
+	double * b = dmalloc_1d(N);
+	double * x0 = dmalloc_1d(N);
 	printf("\n");
 	set_A(A,N);
-	set_B(B,N);
-	displayArray(A, N);
+	set_B(b,N);
+	/*displayArray(A, N);
 	printf("\n\n");
-	displayVect(B,N);
+	displayVect(B,N);*/
+	gaussseidel(A,b,x0,N);
 
 	return 0;
 
