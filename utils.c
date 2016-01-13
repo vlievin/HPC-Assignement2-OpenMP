@@ -68,9 +68,18 @@ void set_B (double*B, int N){
 	}*/
 	int i;
 	for(i=0; i<N; i++){
-		scanf("%lf",&B[i]);
+		B[i] = rand()%10;
 	}
 }
+
+void displayVect(double *B, int N)
+{
+	int i;
+	for(i=0; i<N; i++){
+		printf("%f", B[i]);
+	}
+}
+
 
 void free_A(double **A){
     

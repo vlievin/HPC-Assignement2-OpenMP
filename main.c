@@ -13,6 +13,8 @@ int main()
 	set_A(A,N);
 	set_B(B,N);
 	displayArray(A, N);
+	printf("\n\n");
+	displayVect(B,N);
 
 	return 0;
 
