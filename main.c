@@ -14,10 +14,10 @@ int main()
 	printf("\n");
 	set_A(A,N);
 	set_B(b,N);
-	/*displayArray(A, N);
+	displayArray(A, N);
 	printf("\n\n");
-	displayVect(B,N);*/
-	gaussseidel(A,b,x0,N);
+	displayVect(b,N);
+	//gaussseidel(A,b,x0,N);
 
 	return 0;
 
