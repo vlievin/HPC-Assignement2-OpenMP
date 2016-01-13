@@ -6,20 +6,19 @@
 
 int main()
 {
-	int real_size = 50;
-	int N = real_size * real_size;
+	int real_size = 64;
+	real_size +=2;
+	int N = real_size;
 	double ** A = dmalloc_2d(N);
-	double * b = dmalloc_1d(N);
-	double * x0 = dmalloc_1d(N);
-	double * x = dmalloc_1d(N);
-
+	double ** b = dmalloc_2d(N);
+	//double * x = dmalloc_1d(N);
 	set_A(A,N);
 	set_B(b,N);
-	set_B(x0,N);
+	
+	double**x = jacobi(A,b,N, 1000);
 
-	jacobi2(A,b,x, x0,N, 10);
-
-	write2file(A,N);
+	//writeArray2file(b,N);
+	writeArray2file(x,N);
 
 	return 0;
 

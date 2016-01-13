@@ -6,9 +6,13 @@ void set_A(double**A, int N);
 
 void displayArray(double **A, int N);
 
-void write2file(double** A, int N);
+void writeArray2file(double** A, int N);
 
-void set_B (double*B, int N);
+void writeVec2file(double* x, int N);
+
+void set_B(double**B, int N);
+
+void set_x0(double**B, int N);
 
 void displayVect(double *B, int N);
 
