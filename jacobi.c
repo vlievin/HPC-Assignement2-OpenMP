@@ -33,6 +33,10 @@
 
 double** jacobi( double **A, double** b, int N, int nb_iter)
 {	
+	/*
+		TODO: add criterion
+	*/
+
 	double ** x = dmalloc_2d(N);
 	double ** x_tmp = dmalloc_2d(N);	
 	set_x0(x,N);

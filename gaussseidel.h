@@ -1,4 +1,3 @@
 
-//void split(double** A, double** L, double** U, int N);
 
-double* gaussseidel( double **A, double* b, double* x0, int N, int nb_iter);
+double** gaussseidel( double **A, double** b, int N, int nb_iter);

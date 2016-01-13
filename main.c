@@ -15,7 +15,7 @@ int main()
 	set_A(A,N);
 	set_B(b,N);
 	
-	double**x = jacobi(A,b,N, 1000);
+	double**x = gaussseidel(A,b,N, 1000);
 
 	//writeArray2file(b,N);
 	writeArray2file(x,N);
