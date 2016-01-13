@@ -62,6 +62,22 @@ void displayArray(double **A, int N)
 
 }
 
+void write2file(double** A, int N)
+{
+	FILE* fp;
+	fp = fopen("result.p", "w+");
+	int i,j;
+	for (j = 0; j < N; j++)
+	{
+		for (i=0; i<N;i++)
+		{
+			fprintf( fp,"%f," , A[i][j]  );
+		}
+		printf("\n");
+	}
+	fclose(fp);
+}
+
 void set_B (double*B, int N){
 
 	/*int i;
