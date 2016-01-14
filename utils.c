@@ -163,11 +163,15 @@ double dist(double **A, double **B, int N) {
 
 	double ** C = dmalloc_2d( N );
 	int i,j;
-	for (i = 0; i < N ; i++)
+	#pragma omp parallel
 	{
-		for (j = 0; j < N; j++)
+		#pragma omp parallel for default(none) shared(A,B,C,N) private(i,j)
+		for (i = 0; i < N ; i++)
 		{
-			C[i][j] = A[i][j] - B[i][j];
+			for (j = 0; j < N; j++)
+			{
+				C[i][j] = A[i][j] - B[i][j];
+			}
 		}
 	}
 	double d = norm_mat2(C, N);;
@@ -179,6 +183,7 @@ double norm_mat2(double **A, int N)
 {
 	int i,j;
 	double s = 0;
+	#pragma omp parallel for default(none) shared(N,A) private(j) reduction(+:s)
 	for (i = 0; i < N ; i++)
 	{
 		for (j = 0; j < N; j++)
