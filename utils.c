@@ -151,6 +151,35 @@ void free_A(double **A){
 }
 
 void free_B(double *B){
-
 	free(B);
+}
+
+
+double dist(double **A, double **B, int N) {
+
+	double ** C = dmalloc_2d( N );
+	int i,j;
+	for (i = 0; i < N ; i++)
+	{
+		for (j = 0; j < N; j++)
+		{
+			C[i][j] = A[i][j] - B[i][j];
+		}
+	}
+	return norm_mat2(C, N);
+}
+
+double norm_mat2(double **A, int N)
+{
+	int i,j;
+	double s = 0;
+	for (i = 0; i < N ; i++)
+	{
+		for (j = 0; j < N; j++)
+		{
+			double tmp = A[i][j];
+			s += tmp * tmp;
+		}
+	}
+	return s;
 }

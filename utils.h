@@ -19,3 +19,8 @@ void displayVect(double *B, int N);
 void free_A(double **A);
 
 void free_B(double *B);
+
+double dist(double **A, double **B, int N);
+
+double norm_mat2(double **A, int N);
+
