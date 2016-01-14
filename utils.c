@@ -3,6 +3,10 @@
 #include <math.h>
 #include "utils.h"
 
+#ifdef _OPENMP
+#include <omp.h>
+#endif
+
 
 double ** dmalloc_2d(int N) {
 	if (N <= 0 ) return NULL;
@@ -166,7 +170,9 @@ double dist(double **A, double **B, int N) {
 			C[i][j] = A[i][j] - B[i][j];
 		}
 	}
-	return norm_mat2(C, N);
+	double d = norm_mat2(C, N);;
+	free_A(C);
+	return d;
 }
 
 double norm_mat2(double **A, int N)
@@ -178,8 +184,42 @@ double norm_mat2(double **A, int N)
 		for (j = 0; j < N; j++)
 		{
 			double tmp = A[i][j];
-			s += tmp * tmp;
+			s += (tmp * tmp);
 		}
 	}
+	//printf("\n END norm : s : %e \n", s);
 	return s;
+}
+
+double norm_mat_inf(double **A, int N)
+{
+	int i,j;
+	double m = 0.0;
+	for (i = 0; i < N ; i++)
+	{
+		for (j = 0; j < N; j++)
+		{
+			double tmp = pow(A[i][j],2);
+			/*if (tmp >0)
+				printf("- tmp: %e  |  m  %e  \n" , tmp, m);
+			else
+				printf(".");*/
+			if ( tmp > m )
+				m = tmp;
+		}
+	}
+	//printf("\n END norm : m : %e \n", m);
+	return m;
+}
+
+double copy_mat( double **copyA, double **A, int N)
+{
+	int i,j;
+	for (i = 0; i < N ; i++)
+	{
+		for (j = 0; j < N; j++)
+		{
+			copyA[i][j] = A[i][j];
+		}
+	}
 }

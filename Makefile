@@ -1,9 +1,9 @@
 # define the compiler to use
 CC=suncc
 # flags
-CFLAGS=-g #-O3
-LDFLAGS=
-LIBS = -lm
+CFLAGS=-g -fast -xopenmp -xvpara -xloopinfo #-O3
+LDFLAGS= -fast
+LIBS = -lm -xopenmp
 # macro: sources
 SOURCES= main.c gaussseidel.c jacobi.c utils.c 
 OBJECTS=$(SOURCES:.c=.o)
@@ -19,6 +19,7 @@ $(EXECUTABLE): $(OBJECTS)
 
 clean:
 	rm -rf *.o
+	rm -rf poisson
 
 
 

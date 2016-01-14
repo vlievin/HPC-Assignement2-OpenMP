@@ -2,12 +2,17 @@
 #include <stdlib.h>
 #include <string.h>
 
+#ifdef _OPENMP
+#include <omp.h>
+#endif
+
 #include "utils.h"
 #include "gaussseidel.h"
 #include "jacobi.h"
 
 int main(int argc, char *argv[]) {
 	double threshold = 0.000005;
+	int iter_max = 100000;
 	int real_size = 64;
 
 	// Looks if N is defined as argument.
@@ -34,17 +39,20 @@ int main(int argc, char *argv[]) {
 		printf("The argument supplied for the method is: %s\n", argv[3]);
 		if (strcmp(argv[3],"jacobi") == 0) {
 			printf("executing jacobi sequential...\n");
-			x = jacobi(A,b,N, 1000, threshold);
-		} else if (strcmp(argv[2],"gausseidel") == 0) {
+			x = jacobi(A,b,N, iter_max, threshold);
+		} else if (strcmp(argv[3],"gausseidel") == 0) {
 			printf("executing gaussseidel sequential...\n");
-			x = gaussseidel(A,b,N, 1000, threshold);
+			x = gaussseidel(A,b,N, iter_max, threshold);
+		} else if (strcmp(argv[3],"parallel_jacobi") == 0) {
+			printf("executing jacobi parallel...\n");
+			x = parallel_jacobi(A,b,N, iter_max, threshold);
 		} else {
 			printf("Unknown argument %s will execute gaussseidel sequential\n", argv[3]);
-			x = gaussseidel(A,b,N, 1000, threshold);
+			x = gaussseidel(A,b,N, iter_max, threshold);
 		}
 	} else {
 		printf("No argument suplied will use gaussseidel sequential with N: %i and threshold: %e\n", real_size, threshold);
-		x = gaussseidel(A,b,N, 1000, threshold);
+		x = gaussseidel(A,b,N, iter_max, threshold);
 	}
 
 	// save result
