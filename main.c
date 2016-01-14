@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
 		if (strcmp(argv[3],"jacobi") == 0) {
 			printf("executing jacobi sequential...\n");
 			x = jacobi(A,b,N, iter_max, threshold);
-		} else if (strcmp(argv[3],"gausseidel") == 0) {
+		} else if (strcmp(argv[3],"gaussseidel") == 0) {
 			printf("executing gaussseidel sequential...\n");
 			x = gaussseidel(A,b,N, iter_max, threshold);
 		} else if (strcmp(argv[3],"parallel_jacobi") == 0) {

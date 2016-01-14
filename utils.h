@@ -22,9 +22,4 @@ void free_B(double *B);
 
 double dist(double **A, double **B, int N);
 
-double norm_mat2(double **A, int N);
-
-double norm_mat_inf(double **A, int N);
-
-double copy_mat( double **copyA, double **A, int N);
-
+double dist_para(double x, double x_tmp);
