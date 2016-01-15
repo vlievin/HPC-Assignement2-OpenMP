@@ -1,8 +1,8 @@
 #!/bin/bash
 
 ### grep from dat files and save in CSV style format
-#NAME="*N_300.dat"
-NAME="*.dat"
+NAME="*N_1500.dat"
+#NAME="*.dat"
 
 K_LINE=`find . -name "$NAME" -exec  grep 'k is:' {} \;`
 K=`echo "$K_LINE" | grep -Eo '[0-9]{1,7}'`

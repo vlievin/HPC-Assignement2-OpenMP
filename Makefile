@@ -2,8 +2,8 @@
 CC=suncc
 ### flags
 # -fast -xO3 -xO5 
-CFLAGS=-g -xO3 -xopenmp -xvpara -xloopinfo -xtarget=ivybridge
-LDFLAGS= -xO3
+CFLAGS=-g -fast -xopenmp -xvpara -xloopinfo -xtarget=ivybridge
+LDFLAGS= -fast
 LIBS = -lm -xopenmp
 # macro: sources
 SOURCES= main.c gaussseidel.c jacobi.c utils.c 
