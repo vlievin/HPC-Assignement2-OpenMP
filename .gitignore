@@ -1,5 +1,5 @@
-*.o*
 *.txt
 *.dat
 poisson
+*.o*
 *.e*
