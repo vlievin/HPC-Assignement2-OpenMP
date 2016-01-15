@@ -1,7 +1,7 @@
 # define the compiler to use
 CC=suncc
 # flags
-CFLAGS=-g -fast -xopenmp -xvpara -xloopinfo #-xtarget=ivybridge
+CFLAGS=-g -fast -xopenmp -xvpara -xloopinfo -xtarget=ivybridge
 LDFLAGS= -fast
 LIBS = -lm -xopenmp
 # macro: sources

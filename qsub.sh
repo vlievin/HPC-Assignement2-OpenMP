@@ -20,7 +20,7 @@
 if test X$PBS_ENVIRONMENT = XPBS_BATCH; then cd $PBS_O_WORKDIR; fi
 
 # 1 2 4 8
-THREADS=2
+THREADS=8
 N=( 100 200 300 400 )
 # jacobi parallel_jacobi gaussseidel
 METHOD=( jacobi parallel_jacobi gaussseidel )

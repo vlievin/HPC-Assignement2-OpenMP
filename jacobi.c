@@ -53,6 +53,7 @@ double** parallel_jacobi( double **A, double** b, int N, int nb_iter, double thr
 	k = 0;
 	double d = INFINITY;
 	double delta = 2.0 / ((double)(N-3));
+	# parallel for outside - orphaning
 	while ( d > threshold && k < nb_iter )
 	{
 		d = 0.0;
@@ -65,6 +66,7 @@ double** parallel_jacobi( double **A, double** b, int N, int nb_iter, double thr
 				d += x_tmp[i][j]*x_tmp[i][j] - x[i][j]*x[i][j];
 			}
 		}
+		# code protected ... single, one d for checking d_tmp for setting
 		tmp = x;
 		x = x_tmp;
 		x_tmp = tmp;
