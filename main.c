@@ -46,6 +46,9 @@ int main(int argc, char *argv[]) {
 		} else if (strcmp(argv[3],"parallel_jacobi") == 0) {
 			printf("executing jacobi parallel...\n");
 			x = parallel_jacobi(A,b,N, iter_max, threshold);
+		} else if (strcmp(argv[3],"parallel2_jacobi") == 0) {
+			printf("executing jacobi parallel more optimized...\n");
+			x = parallel2_jacobi(A,b,N, iter_max, threshold);
 		} else {
 			printf("Unknown argument %s will execute gaussseidel sequential\n", argv[3]);
 			x = gaussseidel(A,b,N, iter_max, threshold);

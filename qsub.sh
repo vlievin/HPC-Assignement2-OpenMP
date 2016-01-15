@@ -8,7 +8,7 @@
 # -- estimated wall clock time (execution time): hh:mm:ss --
 #PBS -l walltime=00:30:00
 # -- number of processors/cores/nodes (request X node with X cores) --
-#PBS -l nodes=1:ppn=4
+#PBS -l nodes=1:ppn=8
 # -- CPU type --
 #PBS -l feature='XeonE5-2680'
 # -- user email address --
@@ -22,8 +22,8 @@ if test X$PBS_ENVIRONMENT = XPBS_BATCH; then cd $PBS_O_WORKDIR; fi
 # 1 2 4 8
 THREADS=8
 N=( 100 200 300 400 )
-# jacobi parallel_jacobi gaussseidel
-METHOD=( jacobi parallel_jacobi gaussseidel )
+# jacobi parallel_jacobi parallel2_jacobi gaussseidel
+METHOD=( jacobi parallel_jacobi parallel2_jacobi gaussseidel )
 
 # waiting threads should be active and consume CPU power - better for performance
 export OMP_WAIT_POLICY=active
