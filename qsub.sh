@@ -8,7 +8,7 @@
 # -- estimated wall clock time (execution time): hh:mm:ss --
 #PBS -l walltime=00:30:00
 # -- number of processors/cores/nodes (request X node with X cores) --
-#PBS -l nodes=1:ppn=2
+#PBS -l nodes=1:ppn=4
 # -- CPU type --
 #PBS -l feature='XeonE5-2680'
 # -- user email address --
@@ -33,7 +33,7 @@ for i in ${METHOD[@]} ; do
 		outfile="${i}-${CPUTYPE}-Threads_${THREADS}-N_${j}.dat"
 		export OMP_NUM_THREADS="$THREADS"
 		export SUNW_MP_WARN="true"
-		time ./poisson "$j" 0 "$i" >> "$outfile" 2>&1
+		/usr/bin/time -o "$outfile" ./poisson "$j" 0 "$i" >> "$outfile" 2>&1
 
 		NPROCS=`wc -l < "${PBS_NODEFILE}"`
 		(
