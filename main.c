@@ -11,7 +11,7 @@
 #include "jacobi.h"
 
 int main(int argc, char *argv[]) {
-	double threshold = 0;
+	double threshold = 0.00001;
 	int iter_max = 100000;
 	int real_size = 64;
 
