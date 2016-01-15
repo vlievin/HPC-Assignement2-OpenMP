@@ -57,7 +57,7 @@ double** parallel_jacobi( double **A, double** b, int N, int nb_iter, double thr
 	{
 		d = 0.0;
 		// variables are shared by default
-		#pragma omp parallel private(i,j) reduction(+:d)
+		#pragma omp parallel for private(i,j) reduction(+:d)
 		for (i = 1; i < N-1; i++)
 		{
 			for (j = 1; j < N-1; j++)

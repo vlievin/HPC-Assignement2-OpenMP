@@ -20,8 +20,8 @@
 if test X$PBS_ENVIRONMENT = XPBS_BATCH; then cd $PBS_O_WORKDIR; fi
 
 # 1 2 4 8
-THREADS=8
-N=( 50 100 150 200 300 450 )
+THREADS=1
+N=( 50 100 150 200 300 450 750 1500 )
 METHOD=( jacobi parallel_jacobi parallel2_jacobi gaussseidel )
 
 # waiting threads should be active and consume CPU power - better for performance
@@ -31,7 +31,7 @@ export CORES=`cat /dev/cpuset/torque/$PBS_JOBID/cpus`
 
 for i in ${METHOD[@]} ; do
 	for j in ${N[@]} ; do
-		outfile="${i}-${CPUTYPE}-Threads_${THREADS}-N_${j}.dat"
+		outfile="${i}-xO3_opt-${CPUTYPE}-Threads_${THREADS}-N_${j}.dat"
 		export OMP_NUM_THREADS="$THREADS"
 		export SUNW_MP_WARN=true
 		/usr/bin/time -o "$outfile" numactl -l -C $CORES ./poisson $j 0 $i >> "$outfile" 2>&1
@@ -40,6 +40,7 @@ for i in ${METHOD[@]} ; do
 		(
 		        echo == CPUTYPE: $CPUTYPE
 			echo == CORES: $CORES
+			echo == THREADS: $THREADS
 		        echo == NPROCS: $NPROCS
 		        echo == PBS_NP: $PBS_NP
 		        echo == PBS_NODENUM: $PBS_NODENUM
@@ -49,4 +50,3 @@ for i in ${METHOD[@]} ; do
 		) >> "$outfile" 2>&1
 	done
 done
-
